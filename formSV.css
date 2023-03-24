@@ -1,12 +1,36 @@
-table{
+tr{
     border: 1px solid;
-    /* margin-left: 20%;
-    margin-right: 20%; */
 }
-#point_col{
-    width: 10%;
+
+.point_col{
+    border: none;
     margin-right: 0px;
+    width: 5%;
+}
+
+.input{
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+}
+.table_header{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#form{
+    border-collapse: collapse;
+    border: 1px solid;
+    margin-left: 20%;
+}
+
+#TBHK{
+    width: 50px;
+}
+#title-big{
+    font-weight: bold;
 }
 #title-small{
     font-style: italic;
 }
+
