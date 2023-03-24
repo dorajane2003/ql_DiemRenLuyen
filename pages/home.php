@@ -122,7 +122,9 @@
                 ?>
                     <tr>
                         <td><?php echo $tc2['nd_tc2']; ?></td>
+                        
                         <?php
+                        
                         $temp ='id_tc2';
                         if (check_exist_list($tc2['id_tc2'],$list_tc3,$temp) ){
                         ?>  
@@ -136,7 +138,7 @@
                                                             $temp = "id_tc2={$tc2['id_tc2']}";
                                                             if (empty($error_diem[$temp]))
                                                                 echo  $diem[$temp];
-                                                                ;?>">
+                                                            ;?>">
                                 
                             </td>
                         <?php } 
@@ -150,10 +152,23 @@
                 ?>
                         <tr>
                             <td><?php echo $tc3['nd_tc3']; ?></td>
-                            <td><input type="number" name="<?php echo "id_tc3=".$tc3['id_tc3']; ?>" id="" placeholder="nhập điểm"></td>
+                            <?php
+                            if ($tc3['id_tc2']==1){
+                            ?>
+                             <td><input type="radio" name="dtb"> </td>
+                             <?php
+                            }else{
+                             ?>
+                            <td><input type="number" name="<?php echo "id_tc3=".$tc3['id_tc3']; ?>" id="" placeholder="nhập điểm" 
+                                value="<?php 
+                                                $temp = "id_tc3={$tc3['id_tc3']}";
+                                                        if (empty($error_diem[$temp]))
+                                                            echo  $diem[$temp];;
+                                                ?>">
+                            </td>
                         </tr>
                 <?php
-                    }
+                    }}  
                  }
                 }
             }
