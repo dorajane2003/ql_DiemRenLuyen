@@ -1,0 +1,12 @@
+table{
+    border: 1px solid;
+    /* margin-left: 20%;
+    margin-right: 20%; */
+}
+#point_col{
+    width: 10%;
+    margin-right: 0px;
+}
+#title-small{
+    font-style: italic;
+}
