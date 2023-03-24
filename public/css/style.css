@@ -9,13 +9,11 @@ body{
 }
 
 #container{
+
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-}
-#header_section{
-    border-bottom: 2px solid #ddd;
+    min-height: 30vh;
 }
 .header-content{
     width:900px;
@@ -67,7 +65,7 @@ body{
 }
 
 #form_chamdiem{
-    width:900px;   
+    width:1006px;   
 }
 #form_chamdiem > table{
    
