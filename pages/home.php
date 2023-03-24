@@ -62,7 +62,7 @@
                 if (check_exist_list($tc2['id_tc2'],$list_tc3,'id_tc2')== false){
                     $temp_value = (int)$_POST[$temp];
                     if ($temp_value > $tc2['diem_max_tc2'])
-                        $error_diem[$temp] = $tc2['nd_tc2'];
+                        $error_diem[$temp] = "Tiêu chí ".$tc2['nd_tc2']." vượt quá điểm tối đa";
                     else
                         $diem[$temp] =  $temp_value;    
                 }
@@ -71,12 +71,10 @@
 
        foreach($list_tc3 as $tc3){
             $temp = "id_tc3={$tc3['id_tc3']}";
-            if (!isset($_POST[$temp])){
-                    $error_diem[$temp] = $temp;
-            }else{
+            if (isset($_POST[$temp])){
                 $temp_value = (int)$_POST[$temp];
                 if ($temp_value > $tc3['diem_max_tc3'])
-                    $error_diem[$temp] = $tc3['nd_tc3'];
+                    $error_diem[$temp] = "Tiêu chí ".$tc3['nd_tc3']." vượt quá điểm tối đa";
                 else
                     $diem[$temp] =  $temp_value;    
             }
@@ -100,10 +98,17 @@
         <form action="" method="POST">
             <h1>
                 <?php
-                    if (!empty($error_diem))
-                        print_r($error_diem);
-                ?>
+                    if (!empty($error_diem)){
+                        $temp = $error_diem;
+                        foreach ($temp as $value)
+                        echo '<script type="text/javascript">
+                                alert("'.$value.'");
+                            </script>';
+                    }
+                    ?>  
             </h1>    
+                   
+                    
         <table>
                 <tr>
                     <td>NỘI DUNG ĐÁNH GIÁ</td>
@@ -180,6 +185,3 @@
     </div>
 </div>
 
-<?php
-require "inc/footer.php";
-?>
