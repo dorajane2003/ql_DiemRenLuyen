@@ -83,11 +83,23 @@
 ?>
 <style>
     table{
-        border: none;
+    border: none;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: gray;
+    width: 100%;
     }
     td{
+    
     border: 1px solid #000;
     /* border-left: 1px solid #000; */
+    }
+    .Pdrl td{
+        font-size: 15px;
+        padding: 10px 10px;
+
     }
     input[type=number]{
         border: none;
@@ -96,7 +108,7 @@
 <div id="container">
     <div id="form_chamdiem">
         <form action="" method="POST">
-            <h1>
+            
                 <?php
                     if (!empty($error_diem)){
                         $temp = $error_diem;
@@ -105,20 +117,41 @@
                                 alert("'.$value.'");
                             </script>';
                     }
-                    ?>  
-            </h1>    
+                    ?>     
                    
-                    
-        <table>
+                   
+        <table class="Pdrl">
                 <tr>
-                    <td>NỘI DUNG ĐÁNH GIÁ</td>
-                    <td>Điểm SV tự đánh giá</td>
+                    <td style="height: 36px;vertical-align: top;padding:0px" colspan="2">
+                        <div class="Message">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding:0px">
+                                            <div class="drl-base"> 
+                                                <div class="title" style="background-color: rgb(164, 189, 247);">
+                                                    <span class="Label" style="margin: 5px 0px;padding-left: 5px;">PHIẾU ĐIỂM RÈN LUYỆN</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="height:60px;font-size:25px;color:#07456c; text-align: center; border:none"><b>PHIẾU CHẤM ĐIỂM RÈN LUYỆN</b> </td>
+                </tr>
+                <tr style="height:50px;">
+                    <td ><b>NỘI DUNG ĐÁNH GIÁ</b> </td>
+                    <td ><b>Điểm SV tự đánh giá</b> </td>
                 </tr>
             <?php
                 foreach ($list_tc1 as $tc){
             ?>
                 <tr> 
-                    <td><?php echo $tc['nd_tc1']; ?></td>
+                    <td><b><?php echo $tc['nd_tc1']; ?></b></td>
                     <td></td>
                 </tr> 
                 <?php 
@@ -126,7 +159,20 @@
                     if ($tc2['id_tc1'] == $tc['id_tc1']){
                 ?>
                     <tr>
-                        <td><?php echo $tc2['nd_tc2']; ?></td>
+                        <?php
+                            $temp ='id_tc2';
+                            if(check_exist_list($tc2['id_tc2'],$list_tc3,$temp) ){
+                                ?>
+                            <td><i><?php echo $tc2['nd_tc2']; ?></i></td>
+                        <?php
+                            }
+                            else {
+                                ?>
+                                <td><?php echo $tc2['nd_tc2']; ?></td>
+                        <?php
+                            }
+
+                        ?>
                         
                         <?php
                         
@@ -142,8 +188,9 @@
                                                             value="<?php 
                                                             $temp = "id_tc2={$tc2['id_tc2']}";
                                                             if (empty($error_diem[$temp]))
+                                                            if (!empty($diem[$temp]))
                                                                 echo  $diem[$temp];
-                                                            ;?>">
+                                                            ?>">
                                 
                             </td>
                         <?php } 
@@ -168,8 +215,9 @@
                                 value="<?php 
                                                 $temp = "id_tc3={$tc3['id_tc3']}";
                                                         if (empty($error_diem[$temp]))
-                                                            echo  $diem[$temp];;
-                                                ?>">
+                                                        if (!empty($diem[$temp]))    
+                                                            echo  $diem[$temp];
+                                        ?>">
                             </td>
                         </tr>
                 <?php
@@ -184,4 +232,3 @@
     </form>
     </div>
 </div>
-
